@@ -1,0 +1,7 @@
+.svn/*
+.git/*
+.svn
+.git
+Runtime/*
+*.swp
+
