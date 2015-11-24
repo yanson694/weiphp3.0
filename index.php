@@ -42,7 +42,7 @@ if (! empty ( $_GET ['echostr'] ) && ! empty ( $_GET ["signature"] ) && ! empty 
  * 系统调试设置
  * 项目正式部署后请设置为false
  */
-define ( 'APP_DEBUG', false );
+define ( 'APP_DEBUG', true );
 define ( 'SHOW_ERROR', false );
 
 define ( 'IN_WEIXIN', false );

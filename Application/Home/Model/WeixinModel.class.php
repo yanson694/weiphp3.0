@@ -93,7 +93,15 @@ class WeixinModel extends Model {
 		$msg ['Music'] ['ThumbMediaId'] = $media_id;
 		$msg ['Music'] ['Title'] = $title;
 		$msg ['Music'] ['Description'] = $description;
-		$msg ['Music'] ['MusicURL'] = $music_url;
+		$msg ['Music'] ['MusicUrl'] = $music_url;
+		$msg ['Music'] ['HQMusicUrl'] = $HQ_music_url;
+		$this->_replyData ( $msg, 'music' );
+	}
+	/* 回复不带缩略图的音乐消息 */
+	public function replyMusicnothumb($title = '', $description = '', $music_url, $HQ_music_url) {
+		$msg ['Music'] ['Title'] = $title;
+		$msg ['Music'] ['Description'] = $description;
+		$msg ['Music'] ['MusicUrl'] = $music_url;
 		$msg ['Music'] ['HQMusicUrl'] = $HQ_music_url;
 		$this->_replyData ( $msg, 'music' );
 	}

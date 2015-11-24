@@ -24,6 +24,7 @@ class PictureModel extends Model{
     protected $_auto = array(
         array('status', 1, self::MODEL_INSERT),
         array('create_time', NOW_TIME, self::MODEL_INSERT),
+        array('token', 'get_token', self::MODEL_INSERT,'function'),
     );
 
     /**
@@ -104,8 +105,18 @@ class PictureModel extends Model{
             throw new \Exception('缺少参数:md5');
         }
         /* 查找文件 */
-		$map = array('md5' => $file['md5'],'sha1'=>$file['sha1'],);
-        return $this->field(true)->where($map)->find();
+	$map = array('md5' => $file['md5'],'sha1'=>$file['sha1'],);
+        //wzh修改逻辑删除图片后，再次上传会再次显示出来。避免逻辑删除后，图片库不再显示的bug。原来的图片再次上传，可不再占用空间，直接确认归属。
+	//有问题联系wzhec@foxmail.com
+        $map['token']=$token=get_token();
+        $picData=$this->field(true)->where($map)->find();
+        if($picData){
+            empty($picData['status'])&&($this->where(array('id' =>$picData['id'] ))->setField('status',1));
+            if( empty($picData['token']) || $picData['token']=='-1'){
+                $this->where(array('id' =>$picData['id'] ))->setField('token',$token);
+            }
+        }
+        return $picData;
     }
 
     /**

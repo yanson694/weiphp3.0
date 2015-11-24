@@ -1,7 +1,15 @@
-.svn/*
 .git/*
-.svn
-.git
+.svn/*
+develop/*
 Runtime/*
-*.swp
+Uploads/*
+*~
+*复件*
+*.db
+Desktop.ini
+svn.ico
+db/*
+locks/*
+hooks/*
+conf/*
 

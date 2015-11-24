@@ -70,7 +70,7 @@ class ModelController extends AdminController {
 	function _get_all_addon() {
 		$list = M ( 'addons' )->field ( 'name,title' )->select ();
 		
-		$arr ['Core'] = '系统核心模式';
+		$arr ['Core'] = '系统核心模块';
 		foreach ( $list as $vo ) {
 			$arr [$vo ['name']] = $vo ['title'];
 		}
