@@ -1,5 +1,6 @@
-.git/*
+﻿.git/*
 .svn/*
+.idea/*
 develop/*
 Runtime/*
 Uploads/*
